@@ -40,7 +40,10 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
               </a>
             ))}
-            <a href="#footer" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-slate-100 text-sm font-semibold rounded-full transition-all shadow-lg shadow-blue-900/20 active:scale-95">
+            <a
+              href="#footer"
+              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-slate-100 text-sm font-semibold rounded-full transition-all shadow-lg shadow-blue-900/20 active:scale-95"
+            >
               Contact
             </a>
           </div>
@@ -93,15 +96,18 @@ const Navbar = () => {
           ].map((item) => (
             <a
               key={item}
-              href="#"
+              href={`#${item.toLowerCase()}`}
               className="block text-lg text-slate-300 hover:text-blue-400"
             >
               {item}
             </a>
           ))}
-          <button className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold">
-            Get Started
-          </button>
+          <a
+            href="#footer"
+            className="block w-full md:w-fit py-3 bg-blue-600 text-white rounded-xl font-bold text-center"
+          >
+            Contact
+          </a>
         </div>
       </div>
     </nav>
