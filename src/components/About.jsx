@@ -67,16 +67,21 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="py-24 px-6 min-h-screen flex items-center bg-transparent mt-16"
+      className="py-20 md:py-24 px-4 sm:px-6 min-h-screen flex items-center bg-transparent mt-10 md:mt-16"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full">
-        <div className="flex items-center gap-4 mb-16">
-          <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center w-full">
+        {/* Left Side */}
+        <div className="flex items-center gap-4 mb-6 md:mb-16 justify-center md:justify-start text-center md:text-left">
+          <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl shrink-0">
             <UserSearch className="text-blue-400" size={28} />
           </div>
+
           <div>
             <p className="text-slate-400 font-mono text-sm">~/profile.init</p>
-            <h2 className="text-4xl font-bold text-white">About me</h2>
+
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              About me
+            </h2>
           </div>
         </div>
 
@@ -87,30 +92,33 @@ const About = () => {
 
           <div className="relative bg-[#0f172a]/80 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden">
             {/* Window Header */}
-            <div className="bg-white/5 px-5 py-3 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-white/5 px-4 sm:px-5 py-3 border-b border-white/10 flex items-center justify-between">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/40" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/40" />
                 <div className="w-3 h-3 rounded-full bg-green-500/40" />
               </div>
+
               <span className="text-[10px] font-mono text-slate-500 uppercase tracking-tighter">
                 Chatbot
               </span>
             </div>
 
             {/* Chat Body */}
-            <div className="p-6 h-[400px] flex flex-col gap-6 overflow-hidden">
-              {/* User Message (Triggered by Scroll) */}
+            <div className="p-4 sm:p-6 h-[380px] sm:h-[400px] flex flex-col gap-6 overflow-hidden">
+              {/* User Message */}
               {userText && (
                 <div className="flex gap-3 items-start justify-end animate-in fade-in slide-in-from-right-4 duration-500">
                   <div className="bg-blue-600 text-white px-4 py-2.5 rounded-2xl rounded-tr-none shadow-lg max-w-[85%]">
-                    <p className="text-sm font-medium">
+                    <p className="text-xs sm:text-sm font-medium break-words">
                       {userText}
+
                       {userText.length < fullUserQuery.length && (
                         <span className="inline-block w-1 h-4 ml-1 bg-white animate-pulse" />
                       )}
                     </p>
                   </div>
+
                   <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center shrink-0 border border-white/5">
                     <User size={14} className="text-slate-400" />
                   </div>
@@ -125,16 +133,15 @@ const About = () => {
                   </div>
 
                   {isAiTyping ? (
-                    /* THE 3 DOTS INDICATOR */
                     <div className="flex gap-1.5 p-4 bg-white/5 rounded-2xl rounded-tl-none border border-white/10 items-center">
                       <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
                       <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
                       <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" />
                     </div>
                   ) : (
-                    /* AI TYPED RESPONSE */
-                    <div className="bg-white/5 text-slate-200 p-4 rounded-2xl rounded-tl-none border border-white/10 shadow-sm text-sm leading-relaxed max-w-[90%]">
+                    <div className="bg-white/5 text-slate-200 p-4 rounded-2xl rounded-tl-none border border-white/10 shadow-sm text-xs sm:text-sm leading-relaxed max-w-[90%] break-words">
                       {aiText}
+
                       {aiText.length < fullAiResponse.length && (
                         <span className="inline-block w-1 h-4 ml-1 bg-blue-400 animate-pulse" />
                       )}
@@ -144,14 +151,15 @@ const About = () => {
               )}
             </div>
 
-            {/* Bottom Input Area (Visual Only) */}
+            {/* Bottom Input Area */}
             <div className="p-4 bg-black/20 border-t border-white/10 flex gap-3 items-center">
-              <div className="flex-1 bg-black/20 rounded-full px-4 py-2 text-[11px] text-slate-500 flex items-center italic">
+              <div className="flex-1 bg-black/20 rounded-full px-4 py-2 text-[10px] sm:text-[11px] text-slate-500 flex items-center italic">
                 {aiText.length === fullAiResponse.length
                   ? "Message delivered."
                   : "AI is generating bio..."}
               </div>
-              <div className="p-2 rounded-full bg-white/5 text-slate-700">
+
+              <div className="p-2 rounded-full bg-white/5 text-slate-700 shrink-0">
                 <Send size={14} />
               </div>
             </div>
